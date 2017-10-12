@@ -1,0 +1,12 @@
+# IntelliJ #
+.idea/
+*.iml
+
+# Build Directory #
+build/
+
+# OS X #
+.DS_Store
+
+# Gradle #
+.gradle/
