@@ -12,6 +12,7 @@ public class LambdaWebDriverFactory extends WebDriverFactory {
     private DesiredCapabilities desiredCapabilities;
 
     public LambdaWebDriverFactory() {
+        System.setProperty("webdriver.chrome.driver", getLibLocation("chromedriver"));
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(ChromeOptions.CAPABILITY, getLambdaChromeOptions());
         capabilities.setBrowserName(this.getClass().getCanonicalName());
@@ -20,7 +21,7 @@ public class LambdaWebDriverFactory extends WebDriverFactory {
 
     private ChromeOptions getLambdaChromeOptions() {
         ChromeOptions options = new ChromeOptions();
-        options.setBinary("/var/task/chrome");
+        options.setBinary(getLibLocation("chrome"));
         options.addArguments("--disable-gpu");
         options.addArguments("--headless");
         options.addArguments("--window-size=1366,768");
@@ -31,6 +32,10 @@ public class LambdaWebDriverFactory extends WebDriverFactory {
         options.addArguments("--homedir=/tmp");
         options.addArguments("--disk-cache-dir=/tmp/cache-dir");
         return options;
+    }
+
+    private String getLibLocation(String lib) {
+        return String.format("%s/lib/%s", System.getenv("LAMBDA_TASK_ROOT"), lib);
     }
 
     @Override
