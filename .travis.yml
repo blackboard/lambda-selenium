@@ -2,3 +2,11 @@ script:
   - unzip bin/lib.zip -d lambda-selenium-node/lib
   - unzip bin/node_modules.zip -d lambda-selenium-node/node_modules
   - zip -r node_lambda_function.zip lambda-selenium-node/*
+  
+deploy:
+  provider: releases
+  api_key: $github_token
+  file: node_lambda_function.zip
+  skip_cleanup: true
+  on:
+    tags: true
