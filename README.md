@@ -41,12 +41,10 @@ If a test fails, the exception will be thrown for the parameterized test case an
 
 
 #### Packaging A New Function
-To package a function, you will need to unzip the required libraries from the lambda-selenium/bin/lib.zip file
-into the directory lambda-selenium/lambda-selenium-java/src/main/resources/
 
 To package the jar, run the following command inside the lambda-selenium-java directory
 ```$xslt
-gradle clean shadowJar
+gradle clean unzipLibs shadowJar
 ```
 
 This will package all of the required dependencies and code within the jar file.
