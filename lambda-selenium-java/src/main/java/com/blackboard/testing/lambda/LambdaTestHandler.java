@@ -13,15 +13,15 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
-public class LambdaTestHandler implements RequestHandler<TestRequest, LambdaTestResult> {
+public class LambdaTestHandler implements RequestHandler<TestRequest, TestResult> {
 
-    private static LambdaTestResult lambdaTestResult;
+    private static TestResult testResult;
 
     public LambdaTestHandler() {
-        lambdaTestResult = new LambdaTestResult();
+        testResult = new TestResult();
     }
 
-    public LambdaTestResult handleRequest(TestRequest testRequest, Context context) {
+    public TestResult handleRequest(TestRequest testRequest, Context context) {
         LoggerContainer.LOGGER = new Logger(context.getLogger());
         System.setProperty("target.test.uuid", testRequest.getTestRunUUID());
 
@@ -32,21 +32,21 @@ public class LambdaTestHandler implements RequestHandler<TestRequest, LambdaTest
 
             result = ofNullable(new JUnitCore().run(runner));
         } catch (Exception e) {
-            lambdaTestResult.setThrowable(e);
+            testResult.setThrowable(e);
             LOGGER.log(e);
         }
 
         if (result.isPresent()) {
-            lambdaTestResult.setRunCount(result.get().getRunCount());
-            lambdaTestResult.setRunTime(result.get().getRunTime());
+            testResult.setRunCount(result.get().getRunCount());
+            testResult.setRunTime(result.get().getRunTime());
             LOGGER.log("Run count: " + result.get().getRunCount());
             result.get().getFailures().forEach(failure -> {
                 LOGGER.log(failure.getException());
-                lambdaTestResult.setThrowable(failure.getException());
+                testResult.setThrowable(failure.getException());
             });
         }
 
-        return lambdaTestResult;
+        return testResult;
     }
 
     private Class getTestClass(TestRequest testRequest) {
@@ -62,6 +62,6 @@ public class LambdaTestHandler implements RequestHandler<TestRequest, LambdaTest
     }
 
     public static void addAttachment(String fileName, byte[] attachment) {
-        lambdaTestResult.getAttachments().put(fileName, attachment);
+        testResult.getAttachments().put(fileName, attachment);
     }
 }

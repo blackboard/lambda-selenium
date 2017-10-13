@@ -1,9 +1,7 @@
 package com.blackboard.testing.lambda;
 
 import com.amazonaws.services.lambda.AWSLambdaClientBuilder;
-import com.amazonaws.services.lambda.model.InvocationType;
-import com.amazonaws.services.lambda.model.InvokeRequest;
-import com.amazonaws.services.lambda.model.InvokeResult;
+import com.amazonaws.services.lambda.invoke.LambdaInvokerFactory;
 
 public class TestInvoker {
 
@@ -13,12 +11,11 @@ public class TestInvoker {
         this.request = request;
     }
 
-    public InvokeResult run(String lambdaFunctionName) {
-        InvokeRequest invokeRequest = new InvokeRequest()
-                .withFunctionName(lambdaFunctionName)
-                .withInvocationType(InvocationType.RequestResponse)
-                .withPayload(request.toString());
+    public TestResult run() {
+        final LambdaSeleniumService lambdaService = LambdaInvokerFactory.builder()
+                .lambdaClient(AWSLambdaClientBuilder.defaultClient())
+                .build(LambdaSeleniumService.class);
 
-        return AWSLambdaClientBuilder.defaultClient().invoke(invokeRequest);
+        return lambdaService.runTest(request);
     }
 }

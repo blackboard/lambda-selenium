@@ -1,13 +1,18 @@
 package com.blackboard.testing.lambda;
 
 import static com.blackboard.testing.lambda.logger.LoggerContainer.LOGGER;
+import static java.util.Optional.ofNullable;
 
 import com.blackboard.testing.common.LambdaBaseTest;
 import com.blackboard.testing.runner.ParallelParameterized;
 import com.blackboard.testing.testcontext.TestUUID;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import org.apache.commons.io.FileUtils;
 import org.junit.runner.RunWith;
 import org.junit.runner.manipulation.Filter;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -42,5 +47,23 @@ public class LambdaTestSuite {
             }
         });
         return requests;
+    }
+
+    protected void writeAttachments(Map<String, byte[]> attachments) {
+        File outputDirectory = new File(System.getProperty("user.dir") + "/build/screenshots/");
+        outputDirectory.mkdirs();
+
+        attachments.forEach((fileName, bytes) -> {
+            try {
+                FileUtils.writeByteArrayToFile(new File(outputDirectory, fileName), bytes);
+            } catch (IOException e) {
+                LOGGER.log(e);
+            }
+        });
+    }
+
+    protected void logTestResult(TestRequest request, TestResult result) {
+        LOGGER.log("Test %s:%s completed.", request.getTestClass(), request.getFrameworkMethod());
+        ofNullable(result.getThrowable()).ifPresent(LOGGER::log);
     }
 }
