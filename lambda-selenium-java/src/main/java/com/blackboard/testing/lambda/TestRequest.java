@@ -1,5 +1,7 @@
 package com.blackboard.testing.lambda;
 
+import static java.util.Optional.ofNullable;
+
 import org.junit.runner.Description;
 import org.junit.runners.model.FrameworkMethod;
 
@@ -43,5 +45,10 @@ public class TestRequest {
 
     public void setTestRunUUID(String testRunUUID) {
         this.testRunUUID = testRunUUID;
+    }
+
+    @Override
+    public String toString() {
+        return ofNullable(testClass).orElse("null") + ":" + ofNullable(frameworkMethod).orElse("null");
     }
 }

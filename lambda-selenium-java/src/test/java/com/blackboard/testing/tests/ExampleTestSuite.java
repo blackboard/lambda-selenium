@@ -20,7 +20,7 @@ public class ExampleTestSuite extends LambdaTestSuite {
         this.testRequest = testRequest;
     }
 
-    @Parameters
+    @Parameters(name = "{0}")
     public static Collection<TestRequest> testRequests() {
         LOGGER.log("Running " + filter.describe());
 
