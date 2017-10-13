@@ -6,6 +6,7 @@ script:
   - unzip bin/lib.zip -d lambda-selenium-node/lib
   - unzip bin/node_modules.zip -d lambda-selenium-node/node_modules
   - zip -r node_lambda_function.zip lambda-selenium-node/*
+  - mkdir -p lambda-selenium-java/src/main/resources/lib
   - unzip bin/lib.zip -d lambda-selenium-java/src/main/resources/lib
   - cd lambda-selenium-java
   - gradle clean shadowJar
