@@ -3,9 +3,9 @@ jdk:
   - oraclejdk8
 
 install:
- -cd lambda-selenium-java
- -gradle clean shadowJar
- -cd ../
+ - cd lambda-selenium-java
+ - gradle clean shadowJar
+ - cd ../
 
 after_install:
   - unzip bin/lib.zip -d lambda-selenium-node/lib
