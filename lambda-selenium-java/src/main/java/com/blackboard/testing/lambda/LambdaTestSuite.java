@@ -64,6 +64,8 @@ public class LambdaTestSuite {
 
     protected void logTestResult(TestRequest request, TestResult result) {
         LOGGER.log("Test %s:%s completed.", request.getTestClass(), request.getFrameworkMethod());
-        ofNullable(result.getThrowable()).ifPresent(LOGGER::log);
+        if (ofNullable(result.getThrowable()).isPresent()) {
+            throw new RuntimeException(result.getThrowable());
+        }
     }
 }

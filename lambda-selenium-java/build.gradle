@@ -17,6 +17,10 @@ repositories {
     mavenCentral()
 }
 
+test {
+    include '**/ExampleTestSuite.class'
+}
+
 dependencies {
     compile group: 'com.codeborne', name: 'selenide', version: '4.8'
     compile group: 'com.amazonaws', name: 'aws-lambda-java-events', version: '1.1.0'
@@ -27,7 +31,17 @@ dependencies {
     compile group: 'junit', name: 'junit', version:'4.12'
 }
 
+task unzipLibs(type: Copy) {
+    def libs = file('../bin/lib.zip')
+    def resources = file("${projectDir}/src/main/resources/lib")
+
+    from zipTree(libs)
+    into resources
+}
+
 shadowJar {
     from sourceSets.test.output
     configurations = [ project.configurations.testRuntime ]
+
+    dependsOn unzipLibs
 }
