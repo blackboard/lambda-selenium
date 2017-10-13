@@ -1,9 +1,5 @@
 package com.blackboard.testing.lambda;
 
-import com.blackboard.testing.lambda.logger.LoggerContainer;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.runner.Description;
 import org.junit.runners.model.FrameworkMethod;
 
@@ -47,16 +43,5 @@ public class TestRequest {
 
     public void setTestRunUUID(String testRunUUID) {
         this.testRunUUID = testRunUUID;
-    }
-
-    @JsonIgnore
-    @Override
-    public String toString() {
-        try {
-            return new ObjectMapper().writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            LoggerContainer.LOGGER.log(e);
-            return super.toString();
-        }
     }
 }
