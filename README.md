@@ -17,19 +17,20 @@ lambda-selenium-role
 3. Set the Memory to 1536 MB
 4. Set the Timeout to 5 min
 5. Set the Code entry type to Upload a file from Amazon S3
-6. Paste in the link to the package into the S3 link URL
+6. Paste in the location of the package previously uploaded into the S3 link URL
 7. Save the changes
 
 Note: S3 is required because of the size of the package.
 
 Now the function is ready to be invoked.
 
-* Clone the repository
+* Clone the repository and cd into the java example
 ```$xslt
 git clone git@github.com:blackboard/lambda-selenium.git
+cd lambda-selenium-java/
 ```
 
-* Run the parameterized test suite ExampleTestSuite using and IDE or from the command line with:
+* Run the parameterized test suite ExampleTestSuite using an IDE or from the command line with:
 ```$xslt
 gradle clean test
 ```
