@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 @Category(Test.class)
-public class LambdaBaseTestFullIT extends LambdaBaseTest {
+public class LambdaTest extends LambdaBaseTest {
 
     @Test
     public void googleTest() {
