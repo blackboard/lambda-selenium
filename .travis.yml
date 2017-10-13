@@ -3,9 +3,9 @@ jdk:
   - oraclejdk8
 
 script:
-  - unzip bin/lib.zip -d lambda-selenium-node/lib
-  - unzip bin/node_modules.zip -d lambda-selenium-node/node_modules
-  - zip -r node_lambda_function.zip lambda-selenium-node/*
+  - unzip -q bin/lib.zip -d lambda-selenium-node/lib
+  - unzip -q bin/node_modules.zip -d lambda-selenium-node/node_modules
+  - zip -q -r node_lambda_function.zip lambda-selenium-node/*
   - cd lambda-selenium-java
   - gradle clean unzipLibs shadowJar
   - mv build/libs/lambda-selenium-all.jar ../java_lambda_function.zip
