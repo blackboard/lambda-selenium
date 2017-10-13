@@ -14,8 +14,9 @@ script:
 deploy:
   provider: releases
   api_key: $github_token
-  file_glob: true
-  file: "*_lambda_function.zip"
+  file:
+    - "node_lambda_function.zip"
+    - "java_lambda_function.zip"
   skip_cleanup: true
   on:
     tags: true
