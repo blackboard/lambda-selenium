@@ -10,6 +10,7 @@ script:
   - cd lambda-selenium-java
   - gradle clean shadowJar
   - mv build/libs/lambda-selenium-all.jar ../java_lambda_function.zip
+  - cd ../
   
 deploy:
   provider: releases
