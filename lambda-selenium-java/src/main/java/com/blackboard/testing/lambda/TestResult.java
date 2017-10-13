@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.runner.Result;
 
-public class LambdaTestResult {
+public class TestResult {
 
     private Throwable throwable;
     private int runCount;
@@ -16,9 +16,9 @@ public class LambdaTestResult {
     private long runTime;
     private Map<String, byte[]> attachments = new HashMap<>();
 
-    public LambdaTestResult() {}
+    public TestResult() {}
 
-    public LambdaTestResult(Result result) {
+    public TestResult(Result result) {
         runCount = result.getRunCount();
         failureCount = result.getFailureCount();
         ignoreCount = result.getIgnoreCount();
