@@ -27,7 +27,7 @@ Now the function is ready to be invoked.
 * Clone the repository and cd into the java example
 ```$xslt
 git clone git@github.com:blackboard/lambda-selenium.git
-cd lambda-selenium-java/
+cd lambda-selenium/lambda-selenium-java/
 ```
 
 * Run the parameterized test suite ExampleTestSuite using an IDE or from the command line with:
