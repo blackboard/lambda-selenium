@@ -8,7 +8,7 @@
 
 Note: for the tests to execute this name is required
 ```$xslt
-lambda-selenium-role
+lambda-selenium-function
 ```
 
 * Change the settings of the Lambda Function
