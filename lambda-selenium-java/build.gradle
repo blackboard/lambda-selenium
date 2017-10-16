@@ -33,7 +33,7 @@ dependencies {
 
 task unzipLibs(type: Copy) {
     def libs = file('../bin/lib.zip')
-    def resources = file("${projectDir}/src/main/resources/lib")
+    def resources = file("${projectDir}/src/main/resources/")
 
     from zipTree(libs)
     into resources
