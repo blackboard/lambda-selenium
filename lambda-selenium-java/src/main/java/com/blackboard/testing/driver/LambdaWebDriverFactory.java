@@ -5,18 +5,11 @@ import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class LambdaWebDriverFactory extends WebDriverFactory {
 
-    private DesiredCapabilities desiredCapabilities;
-
     public LambdaWebDriverFactory() {
         System.setProperty("webdriver.chrome.driver", getLibLocation("chromedriver"));
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, getLambdaChromeOptions());
-        capabilities.setBrowserName(this.getClass().getCanonicalName());
-        desiredCapabilities = capabilities;
     }
 
     private ChromeOptions getLambdaChromeOptions() {
@@ -40,6 +33,6 @@ public class LambdaWebDriverFactory extends WebDriverFactory {
 
     @Override
     public WebDriver createWebDriver(Proxy proxy) {
-        return new ChromeDriver(desiredCapabilities);
+        return new ChromeDriver(getLambdaChromeOptions());
     }
 }
