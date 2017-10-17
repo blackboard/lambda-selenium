@@ -1,7 +1,5 @@
 package com.blackboard.testing.tests;
 
-import static com.blackboard.testing.lambda.logger.LoggerContainer.LOGGER;
-
 import com.blackboard.testing.lambda.LambdaTestSuite;
 import com.blackboard.testing.lambda.TestInvoker;
 import com.blackboard.testing.lambda.TestRequest;
@@ -10,8 +8,12 @@ import java.util.Collection;
 import org.junit.Test;
 import org.junit.experimental.categories.Categories.CategoryFilter;
 import org.junit.runners.Parameterized.Parameters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ExampleTestSuite extends LambdaTestSuite {
+
+    private static final Logger logger = LoggerFactory.getLogger(ExampleTestSuite.class);
 
     private static final CategoryFilter filter = CategoryFilter.include(Test.class);
     private TestRequest testRequest;
@@ -22,7 +24,7 @@ public class ExampleTestSuite extends LambdaTestSuite {
 
     @Parameters(name = "{0}")
     public static Collection<TestRequest> testRequests() {
-        LOGGER.log("Running " + filter.describe());
+        logger.info("Running %s", filter.describe());
 
         return getTestRequests("com.blackboard.testing.tests", filter);
     }

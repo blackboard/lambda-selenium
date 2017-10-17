@@ -1,6 +1,5 @@
 package com.blackboard.testing.lambda;
 
-import static com.blackboard.testing.lambda.logger.LoggerContainer.LOGGER;
 import static java.util.Optional.ofNullable;
 
 import com.blackboard.testing.common.LambdaBaseTest;
@@ -18,9 +17,13 @@ import org.junit.runner.manipulation.Filter;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.InitializationError;
 import org.reflections.Reflections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RunWith(ParallelParameterized.class)
 public class LambdaTestSuite {
+
+    private static final Logger logger = LoggerFactory.getLogger(LambdaTestSuite.class);
 
     private static List<Class> getTestClasses(String folderName) {
         Reflections reflections = new Reflections(folderName);
@@ -43,7 +46,7 @@ public class LambdaTestSuite {
                             }
                         });
             } catch (InitializationError e) {
-                LOGGER.log(e);
+                logger.error("Test Request Initialization Error", e);
             }
         });
         return requests;
@@ -57,13 +60,13 @@ public class LambdaTestSuite {
             try {
                 FileUtils.writeByteArrayToFile(new File(outputDirectory, fileName), bytes);
             } catch (IOException e) {
-                LOGGER.log(e);
+                logger.error("Unable to write screenshots to file", e);
             }
         });
     }
 
     protected void logTestResult(TestRequest request, TestResult result) {
-        LOGGER.log("Test %s:%s completed.", request.getTestClass(), request.getFrameworkMethod());
+        logger.info("Test %s:%s completed.", request.getTestClass(), request.getFrameworkMethod());
         if (ofNullable(result.getThrowable()).isPresent()) {
             throw new RuntimeException(result.getThrowable());
         }
