@@ -1,6 +1,6 @@
 # Lambda-Selenium: NodeJS Tutorial [![Build Status](https://travis-ci.org/blackboard/lambda-selenium.svg?branch=master)](https://travis-ci.org/blackboard/lambda-selenium)
 
-[![Basic Tutorial](./node_thumb.png)](./node_quickstart.mp4 "Basic Tutorial")
+[![Basic Tutorial](./node_thumb.png)](./node_quickstart.webm "Basic Tutorial")
 
 
 #### Running The Example
