@@ -7,7 +7,7 @@ Welcome to the lambda-selenium project! The purpose of this project is to show h
 The project examples currently support Chromium version 62 in headless only mode.  However, we are working to provide support for the full versions of Google Chrome and Mozilla Firefox very soon.
 
  [Tutorials](https://blackboard.github.io/lambda-selenium/)
-- [Node.js](https://blackboard.github.io/lambda-selenium/node-tutorial.html/)
+- [Node.js](https://blackboard.github.io/lambda-selenium/node-tutorial.html)
 - [Java](https://blackboard.github.io/lambda-selenium/java-tutorial.html)
 
 **Need help or have a request?** Submit an issue and we would be happy to respond! This project is supported by a global team of software engineers that develop frameworks and scalable infrastructure for high scale end to end UI testing. 
