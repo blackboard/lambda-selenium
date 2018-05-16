@@ -1,0 +1,19 @@
+# serverless.yml
+service: lambda-selenium
+
+package:
+  artifact: build/libs/lambda-selenium-all.jar
+
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  runtime: java8
+  memorySize: 3008
+  timeout: 300
+  versionFunctions: false
+
+functions:
+  'lambda-selenium-demo':
+    handler: 'com.blackboard.testing.lambda.LambdaTestHandler::handleRequest'
+    name: lambda-selenium-function
+    description: Lambda Selenium Demo Tests
