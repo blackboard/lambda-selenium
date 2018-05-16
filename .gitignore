@@ -10,3 +10,6 @@ build/
 
 # Gradle #
 .gradle/
+
+# Serverless #
+.serverless/
