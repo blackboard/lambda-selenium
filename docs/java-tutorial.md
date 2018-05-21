@@ -2,6 +2,11 @@
 
 #### Running The Example
 
+**_Install the serverless framework_**
+```shell
+npm install serverless -g
+```
+
 **_Use shell commands to clone the repository and change the working directory to the Java example_**
 ```shell
 git clone git@github.com:blackboard/lambda-selenium.git
