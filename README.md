@@ -2,6 +2,8 @@
 
 Welcome to the lambda-selenium project! The purpose of this project is to show how to use Selenium Webdriver with Amazon Web Services (AWS) Lambda compute service. 
 
+NEW Demo October 2018!:  [Serverless Task Runner](serverless-task-runner)
+
 [![Basic Tutorial](https://blackboard.github.io/lambda-selenium/node_thumb.png)](https://blackboard.github.io/lambda-selenium/node_quickstart.webm "Basic Tutorial")
 
 The project examples currently support Chromium version 62 in headless only mode.  However, we are working to provide support for the full versions of Google Chrome and Mozilla Firefox very soon.
