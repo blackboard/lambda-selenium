@@ -1,3 +1,6 @@
+## Watch the SeleniumConf presentation!
+[Scaling Selenium to Infinity](https://youtu.be/pnYui-Ua-_s)
+
 # lambda-selenium [![Build Status](https://travis-ci.org/blackboard/lambda-selenium.svg?branch=master)](https://travis-ci.org/blackboard/lambda-selenium)
 
 Welcome to the lambda-selenium project! The purpose of this project is to show how to use Selenium Webdriver with Amazon Web Services (AWS) Lambda compute service. 
