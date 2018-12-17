@@ -17,11 +17,8 @@ public class LambdaTestHandler implements RequestHandler<TestRequest, TestResult
 
     private static TestResult testResult;
 
-    public LambdaTestHandler() {
-        testResult = new TestResult();
-    }
-
     public TestResult handleRequest(TestRequest testRequest, Context context) {
+        testResult = new TestResult();
         LoggerContainer.LOGGER = new Logger(context.getLogger());
         System.setProperty("target.test.uuid", testRequest.getTestRunUUID());
 
